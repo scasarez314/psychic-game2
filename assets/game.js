@@ -43,6 +43,7 @@ document.onkeydown = function (event) {
     if (guess.toLocaleLowerCase() === computerGuess) {
         Wins++;
         guessesLeft = 10;
+        document.getElementById('lettersGuessed').innerHTML = "Guesses Left:" + " " + guessesLeft;
         gameWins.innerHTML = "Wins: " + Wins;
         promtToplay();
 
@@ -52,7 +53,9 @@ document.onkeydown = function (event) {
     else {
         guessesLeft--;
         document.getElementById('lettersGuessed').innerText = "Guesses Left:" + " " + guessesLeft;
-        if (guessesLeft <= 0) {
+        if (guessesLeft < 0) {
+            guessesLeft = 10;
+            document.getElementById('lettersGuessed').innerHTML = "Guesses Left:" + " " + guessesLeft;
             Losses++;
             gameLosses.innerHTML = "Losses: " + Losses;
             promtToplay();
